@@ -58,7 +58,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation rootProject.ext.dependencies["kotlin-stdlib"]
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation rootProject.ext.dependencies["kotlin_coroutines_core"]
     implementation rootProject.ext.dependencies["kotlin_coroutines_android"]
 

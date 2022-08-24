@@ -17,7 +17,6 @@ import com.jxkj.player.core.listener.PlayerTouchListener
 import com.jxkj.player.core.listener.SlidePosition
 import com.jxkj.player.core.utils.CachePresenter
 import com.jxkj.player.widget.SimpleProgressView
-import kotlinx.android.synthetic.main.layout_player_view.view.*
 
 /**
  *Desc:

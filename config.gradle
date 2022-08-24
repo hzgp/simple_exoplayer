@@ -96,7 +96,6 @@ ext {
 
             //kotlin
             "kotlin-stdlib"                     : "org.jetbrains.kotlin:kotlin-stdlib:1.3.0",
-
             //tools
             "easypermissions"                   :"pub.devrel:easypermissions:2.0.1",
             "lottie"                            : "com.airbnb.android:lottie:2.3.0",

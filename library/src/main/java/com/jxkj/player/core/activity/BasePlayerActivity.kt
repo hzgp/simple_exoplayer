@@ -16,7 +16,6 @@ import com.jxkj.player.core.utils.ScreenUtils
 import com.jxkj.player.service.CacheService
 import com.jxkj.player.utils.NotificationHandle
 import com.jxkj.player.widget.SimpleProgressView
-import kotlinx.android.synthetic.main.activity_base_play.*
 
 /**
  *Desc:
@@ -89,7 +88,7 @@ abstract class BasePlayerActivity : AppCompatActivity() {
     }
 
     open fun initViews() {
-        LayoutInflater.from(this).inflate(layoutId(), root, true)
+        LayoutInflater.from(this).inflate(layoutId(), findViewById(R.id.root), true)
         playView = findViewById(R.id.play_view)
 
         playView?.let {
