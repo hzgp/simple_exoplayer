@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_40">
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_arrow_white"
+        android:scaleType="center"
+        />
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/text_14sp"
+        android:paddingStart="@dimen/dp_3"
+        android:paddingEnd="@dimen/dp_15"
+        android:lines="1"
+        android:ellipsize="end"
+        />
+</LinearLayout>
+    <ImageButton android:id="@id/exo_play_pause"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_play"
+        style="@style/ExoMediaButton.Pause"
+        android:contentDescription="@null"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="#000000">
+
+        <TextView android:id="@id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_13sp"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/dp_3"
+            android:paddingRight="@dimen/dp_3"
+            android:includeFontPadding="false"
+            android:textColor="#FFFFFF"
+            />
+        <View android:id="@id/exo_progress_placeholder"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp_25"
+            />
+        <TextView android:id="@id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_13sp"
+            android:textStyle="bold"
+            android:paddingStart="@dimen/dp_3"
+            android:paddingEnd="@dimen/dp_3"
+            android:includeFontPadding="false"
+            android:textColor="#FFFFFF"/>
+        <ImageView
+            android:id="@+id/fullscreen"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="fill_parent"
+            android:paddingEnd="@dimen/dp_15"
+            android:paddingStart="@dimen/dp_15"
+            android:scaleType="center"
+            android:contentDescription="@null"
+            android:src="@mipmap/video_enlarge" />
+    </LinearLayout>
+</FrameLayout>

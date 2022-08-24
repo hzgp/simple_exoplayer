@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'maven-publish'
+}
+def GROUP_ID="com.github.hzgp"
+def ARTIFACT_ID="player"
+def VERSION="1.0.1"
+group GROUP_ID  //一定要加入，否者发布编译时报错
+version VERSION
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = GROUP_ID
+                artifactId =ARTIFACT_ID
+                version = VERSION
+            }
+        }
+    }
+}
+
+android {
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            ndk {
+                //鉴于市场绝大部分机型CPU类型为"armeabi-v7a", "arm64-v8a" ，DEBUG模式下添加x86支持
+                abiFilters "armeabi-v7a", "arm64-v8a"//, "x86"
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation rootProject.ext.dependencies["kotlin-stdlib"]
+    implementation rootProject.ext.dependencies["kotlin_coroutines_core"]
+    implementation rootProject.ext.dependencies["kotlin_coroutines_android"]
+
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["constraint-layout"]
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.16.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.16.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.16.0'
+
+}
+apply from: 'nexus_maven_push.gradle'
